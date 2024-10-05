@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <html lang="vi">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Trang Web Demo</title>
-            <link rel="stylesheet" href="styles.css">
-        </head>
-        <body>
-            <header>
-                <nav>
-                    <ul class="menu">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li>
-                            <a href="#labs">Labs</a>
-                            <ul class="submenu">
-                                <li><a href="lab1.html">Lab 1</a></li>
-                                <li><a href="lab2.html">Lab 2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="lab2.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
     <div class="login-container">
-        <h1>Login</h1>
-        <form action="process-login.php" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            <button type="submit">Login</button>
-        </form>
+        <div class="login-box">
+            <h1>Login website</h1>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email or Phone:</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+            <p><a href="#">Forgotten password?</a></p>
+        </div>
     </div>
-    <footer>
-        <p>Bản quyền © 2024</p>
-    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "user@example.com" && password === "123456") {
+                alert("Login successful!");
+                
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+    </script>
 </body>
 </html>
