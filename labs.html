@@ -6,217 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Website</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            margin-bottom: 1rem;
-        }
-
-        .tab {
-            padding: 1rem;
-            border: 1px solid #ccc;
-            margin-right: 5px;
-            background-color: #f1f1f1;
-        }
-
-        .tab.active {
-            background-color: #fff;
-            border-bottom: none;
-        }
-
-        .tab-content {
-            display: none;
-            border: 1px solid #ccc;
-            padding: 1rem;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Form styling (your CSS for Lab 1) */
-        section {
-            margin: 20px 0;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            color: #333;
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        label {
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-
-        input,
-        select,
-        button {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: #007BFF;
-        }
-
-        button {
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            border: none;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Lab 2 styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-        }
-
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            background-color: #f0f2f5;
-        }
-
-        .login-box {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            width: 400px;
-        }
-
-        .login-box h1 {
-            color: #1877f2;
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #dddfe2;
-            border-radius: 6px;
-            font-size: 1.1em;
-            background-color: #f5f6f7;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            background-color: #1877f2;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-size: 1.1em;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #165db0;
-        }
-
-        p a {
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-
-        p a:hover {
-            text-decoration: underline;
-        }
-
-        .login-box {
-            animation: slide-down 0.5s ease-out;
-        }
-
-        @keyframes slide-down {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            
-        }
-        /* Dashboard and exercise styles */
-        .dashboard-container {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .exercise-list {
-            margin-top: 20px;
-        }
-
-        .exercise-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .exercise-editor {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-        }
-
-        textarea#codeEditor {
-            width: 100%;
-            height: 300px;
-            font-family: monospace;
-            font-size: 14px;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .test-results {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -234,6 +23,7 @@
         <div class="tabs">
             <div class="tab active" onclick="openTab('lab1')">Lab 1</div>
             <div class="tab" onclick="openTab('lab2')">Lab 2</div>
+            <div class="tab" onclick="openTab('lab3')">Lab 3</div>
         </div>
         <div id="lab1" class="tab-content active">
             <h3>Create account</h3>
@@ -315,6 +105,63 @@
                 </div>
             </div>
         </div>
+        <div id="lab3" class="tab-content"></div>
+        <section>
+            <h2>Lab 3 - Assignment Sharing by Subject</h2>
+            <div class="upload-form">
+                <h3>Upload a Lesson</h3>
+                <form id="lessonUploadForm">
+                    <label for="lessonTitle">Lesson Title:</label>
+                    <input type="text" id="lessonTitle" name="lessonTitle" required>
+
+                    <label for="subjectSelect">Select Subject:</label>
+                    <select id="subjectSelect" name="subjectSelect" required>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Computer Science">Computer Science</option>
+                    </select>
+
+                    <label for="lessonFile">Upload Lesson (PDF/Word):</label>
+                    <input type="file" id="lessonFile" name="lessonFile" accept=".pdf,.doc,.docx" required>
+
+                    <button type="submit">Upload Lesson</button>
+                </form>
+            </div>
+
+            <div class="subject-tabs">
+                <button onclick="showSection('subject1')">Mathematics</button>
+                <button onclick="showSection('subject2')">Physics</button>
+                <button onclick="showSection('subject3')">Computer Science</button>
+            </div>
+
+            <div id="subject1" class="content-section active">
+                <h3>Mathematics Documents</h3>
+                <div class="document-list">
+                    <h4>Uploaded Lessons</h4>
+                    <ul id="mathLessons">
+                        <!-- Uploaded lessons for Mathematics will appear here -->
+                    </ul>
+                </div>
+            </div>
+
+            <div id="subject2" class="content-section">
+                <h3>Physics Documents</h3>
+                <div class="document-list">
+                    <h4>Uploaded Lessons</h4>
+                    <ul id="physicsLessons">
+                        <!-- Uploaded lessons for Physics will appear here -->
+                    </ul>
+                </div>
+            </div>
+
+            <div id="subject3" class="content-section">
+                <h3>Computer Science Documents</h3>
+                <h4>Uploaded Lessons</h4>
+                <ul id="csLessons">
+                    <!-- Uploaded lessons for Computer Science will appear here -->
+                </ul>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -374,7 +221,7 @@
             }
         });
 
-        
+
         // Example exercises data
         const exercises = [
             {
@@ -427,6 +274,47 @@
 
         // Initial exercise display
         displayExercises();
+        // Function to handle the lesson upload
+        document.getElementById('lessonUploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const lessonTitle = document.getElementById('lessonTitle').value;
+            const subject = document.getElementById('subjectSelect').value;
+            const fileInput = document.getElementById('lessonFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please upload a file.");
+                return;
+            }
+
+            // Create a new lesson item
+            const lessonItem = document.createElement('li');
+            const lessonLink = document.createElement('a');
+            lessonLink.textContent = lessonTitle;
+            lessonLink.href = URL.createObjectURL(file); // Create a downloadable link for the file
+            lessonLink.target = "_blank"; // Open in new tab
+            lessonItem.appendChild(lessonLink);
+
+            // Append the lesson to the correct subject section
+            if (subject === 'Mathematics') {
+                document.getElementById('mathLessons').appendChild(lessonItem);
+            } else if (subject === 'Physics') {
+                document.getElementById('physicsLessons').appendChild(lessonItem);
+            } else if (subject === 'Computer Science') {
+                document.getElementById('csLessons').appendChild(lessonItem);
+            }
+
+            alert("Lesson uploaded successfully!");
+            document.getElementById('lessonUploadForm').reset(); // Reset the form
+        });
+
+        // Function to show a section by subject
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
     </script>
 </body>
 
