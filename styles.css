@@ -215,3 +215,283 @@ nav {
     width: 30px;
     height: 30px;
 }
+.tabs {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    background-color: #f1f1f1;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.tab-content {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Form styling (your CSS for Lab 1) */
+section {
+    margin: 20px 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #007BFF;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Lab 2 styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f0f2f5;
+}
+
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 400px;
+}
+
+.login-box h1 {
+    color: #1877f2;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 1.1em;
+    background-color: #f5f6f7;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #165db0;
+}
+
+p a {
+    color: #1877f2;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.login-box {
+    animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+/* Dashboard and exercise styles */
+.dashboard-container {
+    display: none;
+    margin-top: 20px;
+}
+
+.exercise-list {
+    margin-top: 20px;
+}
+
+.exercise-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.exercise-editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+textarea#codeEditor {
+    width: 100%;
+    height: 300px;
+    font-family: monospace;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.test-results {
+    margin-top: 20px;
+}
+/* New styles for Lab 3 */
+.subject-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.subject-tabs button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.subject-tabs button:hover {
+    background-color: #0056b3;
+}
+
+.content-section {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.document-list {
+    margin: 20px 0;
+}
+
+.document-list h4 {
+    margin-bottom: 10px;
+}
+
+.document-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.document-list li {
+    margin-bottom: 5px;
+}
+.upload-form {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form input, .upload-form select, .upload-form button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.lesson-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
