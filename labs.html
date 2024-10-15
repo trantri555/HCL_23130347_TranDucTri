@@ -21,10 +21,11 @@
 
     <main>
         <div class="tabs">
-            <div class="tab active" onclick="openTab('lab1')">Lab 1</div>
-            <div class="tab" onclick="openTab('lab2')">Lab 2</div>
-            <div class="tab" onclick="openTab('lab3')">Lab 3</div>
+            <div class="tab active" onclick="openTab('lab1', event)">Lab 1</div>
+            <div class="tab" onclick="openTab('lab2', event)">Lab 2</div>
+            <div class="tab" onclick="openTab('lab3', event)">Lab 3</div>
         </div>
+
         <div id="lab1" class="tab-content active">
             <h3>Create account</h3>
             <form id="userForm">
@@ -105,62 +106,68 @@
                 </div>
             </div>
         </div>
-        <div id="lab3" class="tab-content"></div>
-        <section>
-            <h2>Lab 3 - Assignment Sharing by Subject</h2>
-            <div class="upload-form">
-                <h3>Upload a Lesson</h3>
-                <form id="lessonUploadForm">
-                    <label for="lessonTitle">Lesson Title:</label>
-                    <input type="text" id="lessonTitle" name="lessonTitle" required>
+        <div id="lab3" class="tab-content">
+            <section>
+                <h2>Lab 3 - Assignment Sharing by Subject</h2>
+                <div class="upload-form">
+                    <h3>Upload a Lesson</h3>
+                    <form id="lessonUploadForm">
+                        <label for="lessonTitle">Lesson Title:</label>
+                        <input type="text" id="lessonTitle" name="lessonTitle" required>
 
-                    <label for="subjectSelect">Select Subject:</label>
-                    <select id="subjectSelect" name="subjectSelect" required>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Physics">Physics</option>
-                        <option value="Computer Science">Computer Science</option>
-                    </select>
+                        <label for="subjectSelect">Select Subject:</label>
+                        <select id="subjectSelect" name="subjectSelect" required>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="Python">Python</option>
+                        </select>
 
-                    <label for="lessonFile">Upload Lesson (PDF/Word):</label>
-                    <input type="file" id="lessonFile" name="lessonFile" accept=".pdf,.doc,.docx" required>
+                        <label for="lessonFile">Upload Lesson (PDF/Word):</label>
+                        <input type="file" id="lessonFile" name="lessonFile" accept=".pdf,.doc,.docx" required>
 
-                    <button type="submit">Upload Lesson</button>
-                </form>
-            </div>
+                        <button type="submit">Upload Lesson</button>
+                    </form>
+                </div>
 
-            <div class="subject-tabs">
-                <button onclick="showSection('subject1')">Mathematics</button>
-                <button onclick="showSection('subject2')">Physics</button>
-                <button onclick="showSection('subject3')">Computer Science</button>
-            </div>
+                <div class="subject-tabs">
+                    <button onclick="showSection('subject1')">Java</button>
+                    <button onclick="showSection('subject2')">C++</button>
+                    <button onclick="showSection('subject3')">Python</button>
+                </div>
+                <!-- Lesson Viewer -->
+                <div class="viewer-container" id="lessonViewer" style="display: none;">
+                    <h3 id="lessonViewerTitle"></h3>
+                    <div id="viewerContent"></div>
+                </div>
 
-            <div id="subject1" class="content-section active">
-                <h3>Mathematics Documents</h3>
-                <div class="document-list">
+                <div id="subject1" class="content-section active">
+                    <h3>Java Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="JavaLessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject2" class="content-section">
+                    <h3>C++ Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="C++Lessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject3" class="content-section">
+                    <h3>Python Documents</h3>
                     <h4>Uploaded Lessons</h4>
-                    <ul id="mathLessons">
-                        <!-- Uploaded lessons for Mathematics will appear here -->
+                    <ul id="PythonLessons">
+                        <!-- Uploaded lessons will appear here -->
                     </ul>
                 </div>
-            </div>
-
-            <div id="subject2" class="content-section">
-                <h3>Physics Documents</h3>
-                <div class="document-list">
-                    <h4>Uploaded Lessons</h4>
-                    <ul id="physicsLessons">
-                        <!-- Uploaded lessons for Physics will appear here -->
-                    </ul>
-                </div>
-            </div>
-
-            <div id="subject3" class="content-section">
-                <h3>Computer Science Documents</h3>
-                <h4>Uploaded Lessons</h4>
-                <ul id="csLessons">
-                    <!-- Uploaded lessons for Computer Science will appear here -->
-                </ul>
-            </div>
+        </div>
         </section>
     </main>
 
@@ -168,8 +175,9 @@
         <p>© 2024 Trần Đức Trí</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
     <script>
-        function openTab(tabName) {
+        function openTab(tabName, event) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
@@ -210,12 +218,13 @@
             // Retrieve credentials from local storage
             const storedEmail = localStorage.getItem('email');
             const storedPassword = localStorage.getItem('password');
-
             if (email === storedEmail && password === storedPassword) {
                 alert("Login successful!");
                 document.querySelector('.login-container').style.display = 'none';
                 document.getElementById('dashboardContainer').style.display = 'block';
-                populateExercises(); // Populate exercises on login
+                displayExercises(); // Call this instead of populateExercises()
+
+
             } else {
                 alert("Invalid email or password. Please try again.");
             }
@@ -288,26 +297,73 @@
                 return;
             }
 
-            // Create a new lesson item
-            const lessonItem = document.createElement('li');
-            const lessonLink = document.createElement('a');
-            lessonLink.textContent = lessonTitle;
-            lessonLink.href = URL.createObjectURL(file); // Create a downloadable link for the file
-            lessonLink.target = "_blank"; // Open in new tab
-            lessonItem.appendChild(lessonLink);
 
-            // Append the lesson to the correct subject section
-            if (subject === 'Mathematics') {
-                document.getElementById('mathLessons').appendChild(lessonItem);
-            } else if (subject === 'Physics') {
-                document.getElementById('physicsLessons').appendChild(lessonItem);
-            } else if (subject === 'Computer Science') {
-                document.getElementById('csLessons').appendChild(lessonItem);
-            }
+            const lessonItem = {
+                title: lessonTitle,
+                subject: subject,
+                fileUrl: URL.createObjectURL(file)
+            };
+
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.push(lessonItem);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
 
             alert("Lesson uploaded successfully!");
+            displayLessons();
             document.getElementById('lessonUploadForm').reset(); // Reset the form
         });
+        function displayLessons() {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            const JavaList = document.getElementById('JavaLessons');
+            const CList = document.getElementById('C++Lessons');
+            const PyList = document.getElementById('PythonLessons');
+
+            JavaList.innerHTML = '';
+            CList.innerHTML = '';
+            PyList.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const listItem = document.createElement('li');
+
+                // Create a wrapper div for lesson title and delete button
+                const lessonWrapper = document.createElement('div');
+                lessonWrapper.className = 'lesson-item';
+
+
+                const viewLink = document.createElement('a');
+                viewLink.textContent = lesson.title;
+                viewLink.href = `lesson-viewer.html?index=${index}`; // Redirect to viewer page
+                viewLink.target = "_blank";
+
+                const deleteButton = document.createElement('delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button'; 
+                deleteButton.onclick = () => deleteLesson(index);
+
+                listItem.appendChild(viewLink);
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(lessonWrapper);
+
+
+                if (lesson.subject === 'Java') {
+                    JavaList.appendChild(listItem);
+                } else if (lesson.subject === 'C++') {
+                    CList.appendChild(listItem);
+                } else if (lesson.subject === 'Python') {
+                    PyList.appendChild(listItem);
+                }
+            });
+        }
+
+        // Call displayLessons initially to load stored lessons
+        displayLessons();
+
+        function deleteLesson(index) {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.splice(index, 1);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
+            displayLessons();
+        }
 
         // Function to show a section by subject
         function showSection(sectionId) {
