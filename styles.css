@@ -76,35 +76,10 @@ label {
     font-weight: bold;
 }
 
-input,
-select,
-button {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-}
-
 input:focus,
 select:focus {
     border-color: #007BFF;
     /* Màu viền khi focus */
-}
-
-button {
-    background-color: #007BFF;
-    /* Màu xanh */
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #007BFF;
-    /* Màu khi hover */
 }
 
 footer {
@@ -282,19 +257,6 @@ button {
 input:focus,
 select:focus {
     border-color: #007BFF;
-}
-
-button {
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
 }
 
 /* Lab 2 styles */
@@ -489,9 +451,28 @@ textarea#codeEditor {
     width: 100%;
 }
 
+/* Style for the lesson item wrapper */
 .lesson-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
 }
+
+/* Style for the delete button */
+.delete-button {
+    background-color: red !important;
+    color: white !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    font-size: 0.8rem !important;
+    cursor: pointer !important;
+    border-radius: 3px !important;
+    display: inline-block !important;
+
+}
+
+.delete-button:hover {
+    background-color: darkred !important;
+}
+
