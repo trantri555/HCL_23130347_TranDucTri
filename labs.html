@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="labs.html">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('lab1', event)">Lab 1</div>
+            <div class="tab" onclick="openTab('lab2', event)">Lab 2</div>
+            <div class="tab" onclick="openTab('lab3', event)">Lab 3</div>
+            <div class="tab" onclick="openTab('lab4', event)">Lab 4</div>
+
+        </div>
+
+        <div id="lab1" class="tab-content active">
+            <h3>Create account</h3>
+            <form id="userForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">-- Select Gender --</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="lab2" class="tab-content">
+            <div class="login-container">
+                <div class="login-box">
+                    <h1>Login website</h1>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="loginEmail">Email:</label>
+                            <input type="text" id="loginEmail" name="loginEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" id="loginPassword" name="loginPassword" required>
+                        </div>
+                        <button type="submit">Log In</button>
+                    </form>
+                    <p><a href="#">Forgotten password?</a></p>
+                </div>
+            </div>
+            <div class="dashboard-container" id="dashboardContainer">
+                <div class="dashboard">
+                    <h1>Exercise Dashboard</h1>
+                    <input type="text" id="searchExercise" placeholder="Search exercises...">
+                    <select id="languageFilter">
+                        <option value="">All Languages</option>
+                        <option value="C">C</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                    </select>
+                    <div class="exercise-list" id="exerciseList">
+                        <!-- Exercises will be listed here dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="exercise-container" id="exerciseContainer" style="display: none;">
+                <div class="exercise-box">
+                    <h1 id="exerciseTitle">Exercise Title</h1>
+                    <p id="exerciseDescription">Exercise description...</p>
+                    <select id="languageSwitcher">
+                        <option value="C">C</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                    </select>
+                    <div class="exercise-editor">
+                        <h2>Code Editor</h2>
+                        <textarea id="codeEditor"></textarea>
+                        <button id="runCodeButton">Run Code</button>
+                    </div>
+                    <div class="test-results" id="testResults"></div>
+                </div>
+            </div>
+        </div>
+        <div id="lab3" class="tab-content">
+            <section>
+                <h2>Lab 3 - Assignment Sharing by Subject</h2>
+                <div class="upload-form">
+                    <h3>Upload a Lesson</h3>
+                    <form id="lessonUploadForm">
+                        <label for="lessonTitle">Lesson Title:</label>
+                        <input type="text" id="lessonTitle" name="lessonTitle" required>
+
+                        <label for="subjectSelect">Select Subject:</label>
+                        <select id="subjectSelect" name="subjectSelect" required>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="Python">Python</option>
+                        </select>
+
+                        <label for="lessonFile">Upload Lesson (PDF/Word):</label>
+                        <input type="file" id="lessonFile" name="lessonFile" accept=".pdf,.doc,.docx" required>
+
+                        <button type="submit">Upload Lesson</button>
+                    </form>
+                </div>
+
+                <div class="subject-tabs">
+                    <button onclick="showSection('subject1')">Java</button>
+                    <button onclick="showSection('subject2')">C++</button>
+                    <button onclick="showSection('subject3')">Python</button>
+                </div>
+                <!-- Lesson Viewer -->
+                <div class="viewer-container" id="lessonViewer" style="display: none;">
+                    <h3 id="lessonViewerTitle"></h3>
+                    <div id="viewerContent"></div>
+                </div>
+
+                <div id="subject1" class="content-section active">
+                    <h3>Java Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="JavaLessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject2" class="content-section">
+                    <h3>C++ Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="C++Lessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject3" class="content-section">
+                    <h3>Python Documents</h3>
+                    <h4>Uploaded Lessons</h4>
+                    <ul id="PythonLessons">
+                        <!-- Uploaded lessons will appear here -->
+                    </ul>
+                </div>
+        </div>
+        <div id="lab4" class="tab-content">
+            <div class="header4">
+                <nav>
+                    <a href="#">Business Operations</a>
+                    <a href="#">Cloud Computing</a>
+                    <a href="#">Cybersecurity</a>
+                    <a href="#">Data Science</a>
+                    <a href="#">Development</a>
+                    <a href="#">IT Operations</a>
+                    <a href="#">Language Learning</a>
+                    <a href="#">Marketing</a>
+                </nav>
+            </div>
+
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="avatar"></div>
+                <div>
+                    <h1>Welcome back, Trần Đức Trí</h1>
+                    <a href="#">Add occupation and interests</a>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="streak">
+                    <p><strong>Weekly streak</strong><br>One ring down, one to go. Keep it up!</p>
+                </div>
+                <div class="current-streak">
+                    <img src="image/streak.png" alt="streak">
+                    <div class="current-streak-text">
+                        <strong>2 weeks</strong><br>
+                        <span>Current streak</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg" d="M18 2.0845
+                                 a 15.9155 15.9155 0 0 1 0 31.831
+                                 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke-dasharray="33, 100" d="M18 2.0845
+                                 a 15.9155 15.9155 0 0 1 0 31.831
+                                 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                    </div>
+                    <div class="progress-info">
+                        <ul>
+                            <li><span class="dot orange-dot"></span><strong>11</strong>/30 course min</li>
+                            <li><span class="dot green-dot"></span><strong>4</strong>/1 visit</li>
+                            <li>Oct 13 - 19</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-icon">ℹ</div>
+                <a href="#" class="see-activity">See all activity</a>
+
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="tabs-section">
+                <div class="pick-up">
+                    <h1>Pick up where you left off</h1>
+                    <a href="#" class="my-learning">My learning</a>
+                </div>
+
+                <div class="tabs">
+                    <div><button class="active">Courses</button></div>
+                    <div><button>Learning paths</button></div>
+                    <div><button>Certification preparation</button></div>
+                </div>
+            </div>
+
+            <!-- Course Section -->
+            <div class="course-section">
+                <div class="course-list-wrapper">
+                    <div class="courses">
+                        <div class="course">
+                            <video width="150px" height="220px" controls>
+                                <source src="video/unknow.mp4" type="video/mp4" />
+                            </video>
+                            <div class="course-details">
+                                <p>FPT<br>
+                                    <strong>1. Introduction</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Lecture &bull; 1m</p>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <video width="150px" height="220px" controls>
+                                <source src="video/fmg.mp4" type="video/mp4">
+                            </video>
+                            <div class="course-details">
+                                <p>Mulesoft<br>
+                                    <strong>2. Integration Introduction</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Lecture &bull; 6m left</p>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <img src="image/deer.jpg" alt="Course 3">
+                            <div class="course-details">
+                                <p>English vocabulary<br>
+                                    <strong>7. Quiz and Questions</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Quiz &bull; 9 questions</p>
+                            </div>
+                        </div>
+                        <!-- Additional courses go here -->
+                    </div>
+                    <button class="scroll-btn" id="scrollRight">❯</button>
+                </div>
+            </div>
+            <div class="recommendation-section">
+                <div class="recommendation-header">
+                    <h2>Based on your certification interests, we recommend</h2>
+                    <a href="#" class="edit-certification">Edit certification interests</a>
+                </div>
+
+                <div class="recommendation-content">
+                    <div class="courses">
+                        <div class="course-card">
+                            <img src="image/java.jpg" alt="Java Course">
+                            <p>Oracle Certified Associate Java Programmer (OCAJP) 1Z0-808</p>
+                            <p><strong>Andrii Piatakha, Learn IT University</strong></p>
+                            <p>4.6 ★★★★★ (438)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/oracles.jpg" alt="Oracle Certification">
+                            <p>Oracle Java Certification - Pass the Associate 1Z0-808 Exam.</p>
+                            <p><strong>Tim Buchalka's Learn Programming Academy</strong></p>
+                            <p>4.6 ★★★★★ (6,906)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/bootstrap.webp" alt="Complete Java Bootcamp">
+                            <p>Complete Java SE 8 Developer Bootcamp - OCA Prep Included</p>
+                            <p><strong>Intertech Training, Jeff Jensen</strong></p>
+                            <p>4.6 ★★★★★ (9,726)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/Spring.png" alt="Spring Professional Certification">
+                            <p>Spring Professional Certification Exam Tutorial - Module 02</p>
+                            <p><strong>Dominik Cebula</strong></p>
+                            <p>4.6 ★★★★★ (1,121)</p>
+                        </div>
+                    </div>
+
+                    <!-- Scroll button -->
+                    <button class="scroll-btn" id="scrollRight">
+                        <span class="arrow">❯</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="personalize-section">
+                <img src="image/Avatar_icon_green.svg.png" alt="Icon" style="width:20px; height:20px;">
+                <h2>Personalize your learning experience</h2>
+                <p>Add your occupation and interests to get better content recommendations.</p>
+                <button class="personalize-btn">Add occupation and interests</button>
+            </div>
+
+        </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Trần Đức Trí</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <script>
+        function openTab(tabName, event) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+        document.getElementById('userForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+
+            // Store the username, email, and password in local storage
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
+            alert("Account created successfully!");
+            document.getElementById('loginForm').style.display = 'block';
+        });
+
+        // Login functionality
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Retrieve credentials from local storage
+            const storedEmail = localStorage.getItem('email');
+            const storedPassword = localStorage.getItem('password');
+            if (email === storedEmail && password === storedPassword) {
+                alert("Login successful!");
+                document.querySelector('.login-container').style.display = 'none';
+                document.getElementById('dashboardContainer').style.display = 'block';
+                displayExercises(); // Call this instead of populateExercises()
+
+
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+
+
+        // Example exercises data
+        const exercises = [
+            {
+                title: "Exercise 1",
+                description: "Description for Exercise 1",
+                language: "C"
+            },
+            {
+                title: "Exercise 2",
+                description: "Description for Exercise 2",
+                language: "Python"
+            },
+            {
+                title: "Exercise 3",
+                description: "Description for Exercise 3",
+                language: "Java"
+            }
+        ];
+
+        // Display exercises
+        function displayExercises() {
+            const exerciseList = document.getElementById('exerciseList');
+            exerciseList.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const exerciseItem = document.createElement('div');
+                exerciseItem.className = 'exercise-item';
+                exerciseItem.innerHTML = `
+                    <h3>${exercise.title}</h3>
+                    <p>${exercise.description}</p>
+                    <button onclick="selectExercise(${index})">Select Exercise</button>
+                `;
+                exerciseList.appendChild(exerciseItem);
+            });
+        }
+
+        // Select an exercise
+        function selectExercise(index) {
+            const exercise = exercises[index];
+            document.getElementById('exerciseTitle').innerText = exercise.title;
+            document.getElementById('exerciseDescription').innerText = exercise.description;
+            document.getElementById('exerciseContainer').style.display = 'block';
+            displayExercises(); // Call to display exercises
+        }
+
+        document.getElementById('runCodeButton').addEventListener('click', function () {
+            const code = document.getElementById('codeEditor').value;
+            document.getElementById('testResults').innerText = `Running Code:\n${code}`;
+        });
+
+        // Initial exercise display
+        displayExercises();
+        // Function to handle the lesson upload
+        document.getElementById('lessonUploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const lessonTitle = document.getElementById('lessonTitle').value;
+            const subject = document.getElementById('subjectSelect').value;
+            const fileInput = document.getElementById('lessonFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please upload a file.");
+                return;
+            }
+
+
+            const lessonItem = {
+                title: lessonTitle,
+                subject: subject,
+                fileUrl: URL.createObjectURL(file)
+            };
+
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.push(lessonItem);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
+
+            alert("Lesson uploaded successfully!");
+            displayLessons();
+            document.getElementById('lessonUploadForm').reset(); // Reset the form
+        });
+        function displayLessons() {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            const JavaList = document.getElementById('JavaLessons');
+            const CList = document.getElementById('C++Lessons');
+            const PyList = document.getElementById('PythonLessons');
+
+            JavaList.innerHTML = '';
+            CList.innerHTML = '';
+            PyList.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const listItem = document.createElement('li');
+
+                // Create a wrapper div for lesson title and delete button
+                const lessonWrapper = document.createElement('div');
+                lessonWrapper.className = 'lesson-item';
+
+
+                const viewLink = document.createElement('a');
+                viewLink.textContent = lesson.title;
+                viewLink.href = `lesson-viewer.html?index=${index}`; // Redirect to viewer page
+                viewLink.target = "_blank";
+
+                const deleteButton = document.createElement('delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteLesson(index);
+
+                listItem.appendChild(viewLink);
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(lessonWrapper);
+
+
+                if (lesson.subject === 'Java') {
+                    JavaList.appendChild(listItem);
+                } else if (lesson.subject === 'C++') {
+                    CList.appendChild(listItem);
+                } else if (lesson.subject === 'Python') {
+                    PyList.appendChild(listItem);
+                }
+            });
+        }
+
+        // Call displayLessons initially to load stored lessons
+        displayLessons();
+
+        function deleteLesson(index) {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.splice(index, 1);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
+            displayLessons();
+        }
+
+        // Function to show a section by subject
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+        // Scroll functionality for the course list
+        document.getElementById('scrollRight').addEventListener('click', function () {
+            document.querySelector('.courses').scrollBy({
+                top: 0,
+                left: 400,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .lesson-content {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .lesson-content a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .lesson-content a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="lessonTitle">Lesson Title</h1>
+        <div class="lesson-content">
+            <p id="lessonDescription">Loading content...</p>
+            <a id="downloadLink" href="" target="_blank">Download Lesson</a>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the lesson index from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const lessonIndex = urlParams.get('index');
+
+        // Retrieve lessons from localStorage
+        let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+        const lesson = lessons[lessonIndex];
+
+        if (lesson) {
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonDescription').textContent = `Subject: ${lesson.subject}`;
+            document.getElementById('downloadLink').href = lesson.fileUrl; // Set the download link
+        } else {
+            document.getElementById('lessonTitle').textContent = 'Lesson not found';
+            document.getElementById('lessonDescription').textContent = 'No content available for this lesson.';
+        }
+    </script>
+</body>
+</html>
