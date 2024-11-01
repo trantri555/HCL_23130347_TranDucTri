@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LABS-Lab 5</title>
+    <link rel="icon" href="image/doroorigin.webp" type="image/x-icon"> 
+    <link rel="stylesheet" href="styles/lab5.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/doroorigin.webp" alt="Logo" class="logo-img">
+            <span class="logo-text">Doro-T</span>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html" class="active">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="labs-bar">
+            <ul>
+                <li><a href="lab1.html">Lab 1</a></li>
+                <li><a href="lab2.html">Lab 2</a></li>
+                <li><a href="lab3.html">Lab 3</a></li>
+                <li><a href="lab4.html">Lab 4</a></li>
+                <li><a href="lab5.html" class="active">Lab 5</a></li>
+                <li><a href="lab6.html">Lab 6</a></li>
+            </ul>
+        </div>
+        <div class="learning-header">
+            <h1>My Learning</h1>
+            <p><span class="watch-time">87hr 36min</span> watched <span class="divider"><img src="image/info.png"
+                        style=" width: 15px;  height: 15px;"> </span>
+                <a href="#"> View all activity</a>
+            </p>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('all-courses')">All Courses</button>
+                <button class="tab-button" onclick="openTab('learning-paths')">Learning paths</button>
+                <button class="tab-button" onclick="openTab('certifications')">Certification</button>
+                <button class="tab-button" onclick="openTab('archived')">Archived</button>
+                <button class="tab-button" onclick="openTab('learning-tools')">Learning tools</button>
+
+            </div>
+        </div>
+        <div id="all-courses" class="tab-content active">
+            <div class="my-learning-controls">
+                <div class="sort-filter">
+                    <label for="sort">Sort by</label>
+                    <select id="sort">
+                        <option><strong> Recently Accessed</strong></option>
+                        <option>Alphabetical</option>
+                        <option>Date Added</option>
+                    </select>
+
+                    <label for="categories">Filter by</label>
+                    <select id="categories">
+                        <option><strong> Categories</strong></option>
+                        <option>Programming</option>
+                        <option>Design</option>
+                        <option>Business</option>
+                    </select>
+
+                    <label for="progress"></label>
+                    <select id="progress">
+                        <option><strong>Progress</strong></option>
+                        <option>Completed</option>
+                        <option>In Progress</option>
+                        <option>Not Started</option>
+                    </select>
+
+                    <label for="instructor"></label>
+                    <select id="instructor">
+                        <option><strong>Instructors</strong></option>
+                        <option>Instructor A</option>
+                        <option>Instructor B</option>
+                    </select>
+                </div>
+
+                <div class="reset">
+                    <button onclick="resetFilters()">Reset</button>
+                </div>
+
+                <div class="search">
+                    <input type="text" placeholder="Search my courses" />
+                    <button type="submit"><img src="image/search.png" width="25px" height="25px"></button>
+                </div>
+            </div>
+            <div class="course-cards">
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/ISMS.webp" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">FPT_ISMS</h3>
+                    <p class="course-author">FSOFt Content Development</p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="0.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/bootstrap.webp" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">The Complete Spring Boot Development Bootcamp</h3>
+                    <p class="course-author">Learn The Part Inc., Rayan Slim</p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="0.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/mulesoft.png" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">MuleSoft 4.X Completed guild</h3>
+                    <p class="course-author">Chinna Reddy</p>
+                    <p class="course-progress">1% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="0.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/en-voca.jpg" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">English vocabulary</h3>
+                    <p class="course-author">Mister Rabiey</p>
+                    <p class="course-progress">15% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/api.png" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">Rest API</h3>
+                    <p class="course-author">Rayan Slim</p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="4.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/chatgpt.png" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">Chat GPT</h3>
+                    <p class="course-author">AI</p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="4.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/java.jpg" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">Java Certification</h3>
+                    <p class="course-author">Indian guy</p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="4.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header">
+                        <img src="image/pmp.png" alt="Course Image" class="course-image">
+                        <div class="three-dots">⋮</div>
+                    </div>
+                    <h3 class="course-title">FPT_PMP Training</h3>
+                    <p class="course-author">FPT </p>
+                    <p class="course-progress">100% complete</p>
+                    <div class="rating">
+                        <div class="stars" data-rating="4.5">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="rating-text">Your rating</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="learning-paths" class="tab-content">
+            <div class="learning-path-cards">
+                <div class="learning-path-card">
+                    <!-- Three dots at top right -->
+                    <div class="three-dots">⋮</div>
+        
+                    <!-- Row with Icon, Label, and Title -->
+                    <div class="header-row">
+                        <img src="image/fpt.png" alt="Course Icon" class="course-icon">
+                        <div class="title-content">
+                            <p class="label">Learning path</p>
+                            <h3 class="learning-path-title">Induction Training_GAAFOFY (VI)</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress and Progress Bar at the Bottom -->
+                    <div class="progress-section">
+                        <p class="progress">1 of 6 items complete</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 16%;"></div> <!-- Update width based on progress -->
+                        </div>
+                    </div>
+                </div>
+                <div class="learning-path-card">
+                    <!-- Three dots at top right -->
+                    <div class="three-dots">⋮</div>
+        
+                    <!-- Row with Icon, Label, and Title -->
+                    <div class="header-row">
+                        <img src="image/fpt.png" alt="Course Icon" class="course-icon">
+                        <div class="title-content">
+                            <p class="label">Learning path</p>
+                            <h3 class="learning-path-title">Induction Training for BO_IT_MANDATORY (VI)</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress and Progress Bar at the Bottom -->
+                    <div class="progress-section">
+                        <p class="progress">9 of 9 items complete</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div> <!-- Update width based on progress -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat above card structure for additional learning paths -->
+            </div>
+        </div>
+        
+        <div id="certifications" class="tab-content">
+            <!-- Content for Certifications tab -->
+        </div>
+
+        <div id="archived" class="tab-content">
+            <!-- Content for Archived tab -->
+        </div>
+
+        <div id="learning-tools" class="tab-content">
+            <!-- Content for Learning Tools tab -->
+        </div>
+    </main>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+                At <strong>Our Company</strong>, our mission is to innovate and deliver exceptional products that enrich
+                lives and foster
+                sustainable growth. We value integrity, quality, and customer satisfaction, believing that these
+                principles are key to long-lasting success. Our vision is to be a global leader in our industry, driving
+                positive change and setting new standards of excellence.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html">Labs</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: 23130347@st.hcmuaf.edu.vn</li>
+                <li>Phone: +84 962 759 722 </li>
+                <li>Address: VQCR+GP6, Quarter 6, Thu Duc, Ho Chi Minh city</li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Tran Duc Tri. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    function openTab(tabId) {
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach((content) => {
+            content.classList.remove('active');
+        });
+
+        // Remove active class from all tab buttons
+        document.querySelectorAll('.tab-button').forEach((button) => {
+            button.classList.remove('active');
+        });
+
+        // Show selected tab content and set active class on button
+        document.getElementById(tabId).classList.add('active');
+        document.querySelector(`.tab-button[onclick="openTab('${tabId}')"]`).classList.add('active');
+    }
+
+    function resetFilters() {
+        // Reset all filters to their default values
+        document.getElementById('sort').selectedIndex = 0;
+        document.getElementById('categories').selectedIndex = 0;
+        document.getElementById('progress').selectedIndex = 0;
+        document.getElementById('instructor').selectedIndex = 0;
+        document.querySelector('.search input').value = '';
+    }
+</script>
+
+</html>

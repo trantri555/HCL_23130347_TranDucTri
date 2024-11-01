@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LABS-Lab 2</title>
+    <link rel="icon" href="image/doroorigin.webp" type="image/x-icon"> 
+    <link rel="stylesheet" href="styles/lab2.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/doroorigin.webp" alt="Logo" class="logo-img">
+            <span class="logo-text">Doro-T</span>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html" class="active">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="labs-bar">
+            <ul>
+                <li><a href="lab1.html">Lab 1</a></li>
+                <li><a href="lab2.html" class="active">Lab 2</a></li>
+                <li><a href="lab3.html">Lab 3</a></li>
+                <li><a href="lab4.html">Lab 4</a></li>
+                <li><a href="lab5.html">Lab 5</a></li>
+                <li><a href="lab6.html">Lab 6</a></li>
+            </ul>
+        </div>
+        <div class="lab2">
+            <div class="login-container">
+                <div class="login-box">
+                    <h1>Login website</h1>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="loginEmail">Email:</label>
+                            <input type="text" id="loginEmail" name="loginEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" id="loginPassword" name="loginPassword" required>
+                        </div>
+                        <button type="submit">Log In</button>
+                    </form>
+                    <p><a href="#">Forgotten password?</a></p>
+                </div>
+            </div>
+            <div class="dashboard-container" id="dashboardContainer">
+                <div class="dashboard">
+                    <h1>Exercise Dashboard</h1>
+                    <input type="text" id="searchExercise" placeholder="Search exercises...">
+                    <select id="languageFilter">
+                        <option value="">All Languages</option>
+                        <option value="C">C</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                    </select>
+                    <div class="exercise-list" id="exerciseList">
+                        <!-- Exercises will be listed here dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="exercise-container" id="exerciseContainer" style="display: none;">
+                <div class="exercise-box">
+                    <h1 id="exerciseTitle">Exercise Title</h1>
+                    <p id="exerciseDescription">Exercise description...</p>
+                    <select id="languageSwitcher">
+                        <option value="C">C</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                    </select>
+                    <div class="exercise-editor">
+                        <h2>Code Editor</h2>
+                        <textarea id="codeEditor"></textarea>
+                        <button id="runCodeButton">Run Code</button>
+                    </div>
+                    <div class="test-results" id="testResults"></div>
+                </div>
+            </div>
+        </div>
+</main>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+                At <strong>Our Company</strong>, our mission is to innovate and deliver exceptional products that enrich
+                lives and foster
+                sustainable growth. We value integrity, quality, and customer satisfaction, believing that these
+                principles are key to long-lasting success. Our vision is to be a global leader in our industry, driving
+                positive change and setting new standards of excellence.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html">Labs</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: 23130347@st.hcmuaf.edu.vn</li>
+                <li>Phone: +84 962 759 722 </li>
+                <li>Address: VQCR+GP6, Quarter 6, Thu Duc, Ho Chi Minh city</li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Tran Duc Tri. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    // Login functionality
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Retrieve credentials from local storage
+            const storedEmail = localStorage.getItem('email');
+            const storedPassword = localStorage.getItem('password');
+            if (email === storedEmail && password === storedPassword) {
+                alert("Login successful!");
+                document.querySelector('.login-container').style.display = 'none';
+                document.getElementById('dashboardContainer').style.display = 'block';
+                displayExercises(); // Call this instead of populateExercises()
+
+
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+
+
+        // Example exercises data
+        const exercises = [
+            {
+                title: "Exercise 1",
+                description: "Description for Exercise 1",
+                language: "C"
+            },
+            {
+                title: "Exercise 2",
+                description: "Description for Exercise 2",
+                language: "Python"
+            },
+            {
+                title: "Exercise 3",
+                description: "Description for Exercise 3",
+                language: "Java"
+            }
+        ];
+
+        // Display exercises
+        function displayExercises() {
+            const exerciseList = document.getElementById('exerciseList');
+            exerciseList.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const exerciseItem = document.createElement('div');
+                exerciseItem.className = 'exercise-item';
+                exerciseItem.innerHTML = `
+                    <h3>${exercise.title}</h3>
+                    <p>${exercise.description}</p>
+                    <button onclick="selectExercise(${index})">Select Exercise</button>
+                `;
+                exerciseList.appendChild(exerciseItem);
+            });
+        }
+
+        // Select an exercise
+        function selectExercise(index) {
+            const exercise = exercises[index];
+            document.getElementById('exerciseTitle').innerText = exercise.title;
+            document.getElementById('exerciseDescription').innerText = exercise.description;
+            document.getElementById('exerciseContainer').style.display = 'block';
+            displayExercises(); // Call to display exercises
+        }
+
+        document.getElementById('runCodeButton').addEventListener('click', function () {
+            const code = document.getElementById('codeEditor').value;
+            document.getElementById('testResults').innerText = `Running Code:\n${code}`;
+        });
+
+        // Initial exercise display
+        displayExercises();
+</script>
+</html>

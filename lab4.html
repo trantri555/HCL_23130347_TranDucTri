@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LABS-Lab 4</title>
+    <link rel="icon" href="image/doroorigin.webp" type="image/x-icon"> 
+    <link rel="stylesheet" href="styles/lab4.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/doroorigin.webp" alt="Logo" class="logo-img">
+            <span class="logo-text">Doro-T</span>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html" class="active">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="labs-bar">
+            <ul>
+                <li><a href="lab1.html">Lab 1</a></li>
+                <li><a href="lab2.html">Lab 2</a></li>
+                <li><a href="lab3.html">Lab 3</a></li>
+                <li><a href="lab4.html" class="active">Lab 4</a></li>
+                <li><a href="lab5.html">Lab 5</a></li>
+                <li><a href="lab6.html">Lab 6</a></li>
+            </ul>
+        </div>
+        <div class="lab4">
+            <div class="header4">
+                <nav>
+                    <a href="#">Business Operations</a>
+                    <a href="#">Cloud Computing</a>
+                    <a href="#">Cybersecurity</a>
+                    <a href="#">Data Science</a>
+                    <a href="#">Development</a>
+                    <a href="#">IT Operations</a>
+                    <a href="#">Language Learning</a>
+                    <a href="#">Marketing</a>
+                </nav>
+            </div>
+
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="avatar"></div>
+                <div>
+                    <h1>Welcome back, Trần Đức Trí</h1>
+                    <a href="#">Add occupation and interests</a>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="streak">
+                    <p><strong>Weekly streak</strong><br>One ring down, one to go. Keep it up!</p>
+                </div>
+                <div class="current-streak">
+                    <img src="image/streak.png" alt="streak">
+                    <div class="current-streak-text">
+                        <strong>2 weeks</strong><br>
+                        <span>Current streak</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                            <path class="circle-bg" d="M18 2.0845
+                             a 15.9155 15.9155 0 0 1 0 31.831
+                             a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke-dasharray="33, 100" d="M18 2.0845
+                             a 15.9155 15.9155 0 0 1 0 31.831
+                             a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                    </div>
+                    <div class="progress-info">
+                        <ul>
+                            <li><span class="dot orange-dot"></span><strong>11</strong>/30 course min</li>
+                            <li><span class="dot green-dot"></span><strong>4</strong>/1 visit</li>
+                            <li>Oct 13 - 19</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-icon">ℹ</div>
+                <a href="#" class="see-activity">See all activity</a>
+
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="tabs-section">
+                <div class="pick-up">
+                    <h1>Pick up where you left off</h1>
+                    <a href="#" class="my-learning">My learning</a>
+                </div>
+
+                <div class="tabs">
+                    <div><button class="active">Courses</button></div>
+                    <div><button>Learning paths</button></div>
+                    <div><button>Certification preparation</button></div>
+                </div>
+            </div>
+
+            <!-- Course Section -->
+            <div class="course-section">
+                <div class="course-list-wrapper">
+                    <div class="courses">
+                        <div class="course">
+                            <video width="150px" height="220px" controls>
+                                <source src="video/unknow.mp4" type="video/mp4" />
+                            </video>
+                            <div class="course-details">
+                                <p>FPT<br>
+                                    <strong>1. Introduction</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Lecture &bull; 1m</p>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <video width="150px" height="220px" controls>
+                                <source src="video/fmg.mp4" type="video/mp4">
+                            </video>
+                            <div class="course-details">
+                                <p>Mulesoft<br>
+                                    <strong>2. Integration Introduction</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Lecture &bull; 6m left</p>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <img src="image/deer.jpg" alt="Course 3">
+                            <div class="course-details">
+                                <p>English vocabulary<br>
+                                    <strong>7. Quiz and Questions</strong>
+                                </p>
+                                <br /><br /><br />
+                                <p>Quiz &bull; 9 questions</p>
+                            </div>
+                        </div>
+                        <!-- Additional courses go here -->
+                    </div>
+                    <button class="scroll-btn" id="scrollRight">❯</button>
+                </div>
+            </div>
+            <div class="recommendation-section">
+                <div class="recommendation-header">
+                    <h2>Based on your certification interests, we recommend</h2>
+                    <a href="#" class="edit-certification">Edit certification interests</a>
+                </div>
+
+                <div class="recommendation-content">
+                    <div class="courses">
+                        <div class="course-card">
+                            <img src="image/java.jpg" alt="Java Course">
+                            <p>Oracle Certified Associate Java Programmer (OCAJP) 1Z0-808</p>
+                            <p><strong>Andrii Piatakha, Learn IT University</strong></p>
+                            <p>4.6 ★★★★★ (438)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/oracles.jpg" alt="Oracle Certification">
+                            <p>Oracle Java Certification - Pass the Associate 1Z0-808 Exam.</p>
+                            <p><strong>Tim Buchalka's Learn Programming Academy</strong></p>
+                            <p>4.6 ★★★★★ (6,906)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/bootstrap.webp" alt="Complete Java Bootcamp">
+                            <p>Complete Java SE 8 Developer Bootcamp - OCA Prep Included</p>
+                            <p><strong>Intertech Training, Jeff Jensen</strong></p>
+                            <p>4.6 ★★★★★ (9,726)</p>
+                        </div>
+                        <div class="course-card">
+                            <img src="image/Spring.png" alt="Spring Professional Certification">
+                            <p>Spring Professional Certification Exam Tutorial - Module 02</p>
+                            <p><strong>Dominik Cebula</strong></p>
+                            <p>4.6 ★★★★★ (1,121)</p>
+                        </div>
+                    </div>
+
+                    <!-- Scroll button -->
+                    <button class="scroll-btn" id="scrollRight">
+                        <span class="arrow">❯</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="personalize-section">
+                <img src="image/Avatar_icon_green.svg.png" alt="Icon" style="width:20px; height:20px;">
+                <h2>Personalize your learning experience</h2>
+                <p>Add your occupation and interests to get better content recommendations.</p>
+                <button class="personalize-btn">Add occupation and interests</button>
+            </div>
+        </div>
+    </main>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+                At <strong>Our Company</strong>, our mission is to innovate and deliver exceptional products that enrich
+                lives and foster
+                sustainable growth. We value integrity, quality, and customer satisfaction, believing that these
+                principles are key to long-lasting success. Our vision is to be a global leader in our industry, driving
+                positive change and setting new standards of excellence.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html">Labs</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: 23130347@st.hcmuaf.edu.vn</li>
+                <li>Phone: +84 962 759 722 </li>
+                <li>Address: VQCR+GP6, Quarter 6, Thu Duc, Ho Chi Minh city</li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Tran Duc Tri. All rights reserved.</p>
+    </div>
+</footer>
+
+</html>

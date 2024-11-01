@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LABS-Lab 3</title>
+    <link rel="icon" href="image/doroorigin.webp" type="image/x-icon"> 
+    <link rel="stylesheet" href="styles/lab3.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/doroorigin.webp" alt="Logo" class="logo-img">
+            <span class="logo-text">Doro-T</span>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html" class="active">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="labs-bar">
+            <ul>
+                <li><a href="lab1.html">Lab 1</a></li>
+                <li><a href="lab2.html">Lab 2</a></li>
+                <li><a href="lab3.html" class="active">Lab 3</a></li>
+                <li><a href="lab4.html">Lab 4</a></li>
+                <li><a href="lab5.html">Lab 5</a></li>
+                <li><a href="lab6.html">Lab 6</a></li>
+            </ul>
+        </div>
+        <div class="lab3">
+            <section>
+                <h2>Lab 3 - Assignment Sharing by Subject</h2>
+                <div class="upload-form">
+                    <h3>Upload a Lesson</h3>
+                    <form id="lessonUploadForm">
+                        <label for="lessonTitle">Lesson Title:</label>
+                        <input type="text" id="lessonTitle" name="lessonTitle" required>
+
+                        <label for="subjectSelect">Select Subject:</label>
+                        <select id="subjectSelect" name="subjectSelect" required>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="Python">Python</option>
+                        </select>
+
+                        <label for="lessonFile">Upload Lesson (PDF/Word):</label>
+                        <input type="file" id="lessonFile" name="lessonFile" accept=".pdf,.doc,.docx" required>
+
+                        <button type="submit">Upload Lesson</button>
+                    </form>
+                </div>
+
+                <div class="subject-tabs">
+                    <button onclick="showSection('subject1')">Java</button>
+                    <button onclick="showSection('subject2')">C++</button>
+                    <button onclick="showSection('subject3')">Python</button>
+                </div>
+                <!-- Lesson Viewer -->
+                <div class="viewer-container" id="lessonViewer" style="display: none;">
+                    <h3 id="lessonViewerTitle"></h3>
+                    <div id="viewerContent"></div>
+                </div>
+
+                <div id="subject1" class="content-section active">
+                    <h3>Java Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="JavaLessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject2" class="content-section">
+                    <h3>C++ Documents</h3>
+                    <div class="document-list">
+                        <h4>Uploaded Lessons</h4>
+                        <ul id="C++Lessons">
+                            <!-- Uploaded lessons will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="subject3" class="content-section">
+                    <h3>Python Documents</h3>
+                    <h4>Uploaded Lessons</h4>
+                    <ul id="PythonLessons">
+                        <!-- Uploaded lessons will appear here -->
+                    </ul>
+                </div>
+        </div>
+    </main>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+                At <strong>Our Company</strong>, our mission is to innovate and deliver exceptional products that enrich
+                lives and foster
+                sustainable growth. We value integrity, quality, and customer satisfaction, believing that these
+                principles are key to long-lasting success. Our vision is to be a global leader in our industry, driving
+                positive change and setting new standards of excellence.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html">Labs</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: 23130347@st.hcmuaf.edu.vn</li>
+                <li>Phone: +84 962 759 722 </li>
+                <li>Address: VQCR+GP6, Quarter 6, Thu Duc, Ho Chi Minh city</li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Tran Duc Tri. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    // Function to handle the lesson upload
+        document.getElementById('lessonUploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const lessonTitle = document.getElementById('lessonTitle').value;
+            const subject = document.getElementById('subjectSelect').value;
+            const fileInput = document.getElementById('lessonFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please upload a file.");
+                return;
+            }
+
+
+            const lessonItem = {
+                title: lessonTitle,
+                subject: subject,
+                fileUrl: URL.createObjectURL(file)
+            };
+
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.push(lessonItem);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
+
+            alert("Lesson uploaded successfully!");
+            displayLessons();
+            document.getElementById('lessonUploadForm').reset(); // Reset the form
+        });
+        function displayLessons() {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            const JavaList = document.getElementById('JavaLessons');
+            const CList = document.getElementById('C++Lessons');
+            const PyList = document.getElementById('PythonLessons');
+
+            JavaList.innerHTML = '';
+            CList.innerHTML = '';
+            PyList.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const listItem = document.createElement('li');
+
+                // Create a wrapper div for lesson title and delete button
+                const lessonWrapper = document.createElement('div');
+                lessonWrapper.className = 'lesson-item';
+
+
+                const viewLink = document.createElement('a');
+                viewLink.textContent = lesson.title;
+                viewLink.href = `lesson-viewer.html?index=${index}`; // Redirect to viewer page
+                viewLink.target = "_blank";
+
+                const deleteButton = document.createElement('delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteLesson(index);
+
+                listItem.appendChild(viewLink);
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(lessonWrapper);
+
+
+                if (lesson.subject === 'Java') {
+                    JavaList.appendChild(listItem);
+                } else if (lesson.subject === 'C++') {
+                    CList.appendChild(listItem);
+                } else if (lesson.subject === 'Python') {
+                    PyList.appendChild(listItem);
+                }
+            });
+        }
+
+        // Call displayLessons initially to load stored lessons
+        displayLessons();
+
+        function deleteLesson(index) {
+            let lessons = JSON.parse(localStorage.getItem('lessons')) || [];
+            lessons.splice(index, 1);
+            localStorage.setItem('lessons', JSON.stringify(lessons));
+            displayLessons();
+        }
+
+        // Function to show a section by subject
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+        // Scroll functionality for the course list
+        document.getElementById('scrollRight').addEventListener('click', function () {
+            document.querySelector('.courses').scrollBy({
+                top: 0,
+                left: 400,
+                behavior: 'smooth'
+            });
+        });
+        const searchInput = document.getElementById('search');
+        const courseCards = document.querySelectorAll('.course-card');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+            courseCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const content = card.querySelector('.content').textContent.toLowerCase(); // Update as per structure
+                const lecturer = card.querySelector('.lecturer').textContent.toLowerCase(); // Update as per structure
+                if (title.includes(query) || content.includes(query) || lecturer.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+</script>
+</html>
