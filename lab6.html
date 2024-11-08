@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LABS-Lab 6</title>
+    <link rel="icon" href="image/doroorigin.webp" type="image/x-icon">
+    <link rel="stylesheet" href="styles/lab6.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/doroorigin.webp" alt="Logo" class="logo-img">
+            <span class="logo-text">Doro-T</span>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html" class="active">Labs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="labs-bar">
+            <ul>
+                <li><a href="lab1.html">Lab 1</a></li>
+                <li><a href="lab2.html">Lab 2</a></li>
+                <li><a href="lab3.html">Lab 3</a></li>
+                <li><a href="lab4.html">Lab 4</a></li>
+                <li><a href="lab5.html">Lab 5</a></li>
+                <li><a href="lab6.html" class="active">Lab 6</a></li>
+            </ul>
+        </div>
+
+        <div class="modal-container">
+            <!-- First Modal (Card Selection) -->
+            <div class="modal" id="initialModal">
+                <div class="modal-header">
+                    <h2>New unit test custom challenge</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="grid-container">
+                    <!-- JavaScript (Mocha) Card -->
+                    <div class="card">
+                        <img src="image/mocha.png" alt="JavaScript Icon">
+                        <h3>JavaScript <span class="badge mocha">Mocha</span></h3>
+                        <p>Use the Mocha testing framework and create unit tests to grade solutions.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+                            alt="TypeScript Icon">
+                        <h3>TypeScript <span class="badge mocha">Mocha</span></h3>
+                        <p>Use the Mocha testing framework and create unit tests to grade solutions.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                    <!-- Python (Pytest) Card -->
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+                            alt="Python Icon">
+                        <h3>Python <span class="badge pytest">Pytest</span></h3>
+                        <p>Use the Pytest testing framework and create unit tests to grade solutions.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                    <!-- PHP (PHPUnit) Card -->
+                    <div class="card">
+                        <img src="image/php.png" alt="PHP Icon">
+                        <h3>PHP <span class="badge phpunit">PHPUnit</span></h3>
+                        <p>Use the PHPUnit testing framework and create unit tests to grade solutions.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                    <!-- Java (JUnit) Card -->
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/de/e/e1/Java-Logo.svg" alt="Java Icon">
+                        <h3>Java <span class="badge junit">JUnit</span></h3>
+                        <p>Use the JUnit testing framework and create unit tests to grade solutions.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png"
+                            alt="Kotlin Icon">
+                        <h3>Kotlin <span class="badge junit">JUnit</span></h3>
+                        <p>JUnit is a popular unit-testing framework in the Kotlin ecosystem.</p>
+                        <div class="button-group">
+                            <button class="btn continue" onclick="openSecondModal()">Continue</button>
+                            <button class="btn guide">Guide</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Modal (Form) -->
+            <div class="modal" id="secondModal" style="display: none;">
+                <div class="modal-header">
+                    <h2>New unit test custom challenge</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Demo</p>
+                    <div class="input-group">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty" class="difficulty-select">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="description">Short description:</label>
+                        <input type="text" id="description"
+                            placeholder="Optional short description about this challenge..." class="description-input">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="open-ide-button" onclick="openthirdModal()">Click here to open the Java (JUnit) IDE and
+                        edit your code &rarr;</button>
+                </div>
+            </div>
+
+            <div class="container" id="thirdModal" style="display: none;">
+                <div class="modal-header">
+                    <h2>Edit Custom Challenge</h2>
+                    <button class="close-btn" onclick="closeModal1()">&times;</button>
+                </div>
+
+                <!-- Phần đầu tiên -->
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" value="DSA ET Opt7 01">
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy" selected>Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Short description:</label>
+                    <input type="text" id="description" value="This is a private challenge">
+                </div>
+
+                <div class="form-group">
+                    <div class="text-editor" style="width: 100%;">
+                        <div class="text-editor-toolbar">
+                            <button title="Normal">Normal</button>
+                            <button title="Bold"><b>B</b></button>
+                            <button title="Italic"><i>I</i></button>
+                            <button title="Underline"><u>U</u></button>
+                            <button title="Quote"><img src="image/quot.png" alt="quot"></button>
+                            <button title="Numbered List"><img src="image/numbering.png" alt="numbering"></button>
+                            <button title="List"><img src="image/list.jpg" alt="list"></button>
+                            <button title="Insert Image"><img src="image/picture.png" alt="image"></button>
+                            <button title="Code">&lt;\&gt;</button>
+                        </div>
+                        <textarea id="instructions" placeholder="Write instructions here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="divider">
+                    Starter code will automatically be generated for all 18 coding languages
+                </div>
+
+                <div class="test-case-container">
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <label class="test-case-label">Input type</label>
+                            <select class="test-case-input">
+                                <option>Array of integers</option>
+                            </select>
+                        </div>
+                        <div class="test-case-column">
+                            <label class="test-case-label">Output type</label>
+                            <select class="test-case-output">
+                                <option>Integer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <label class="test-case-label" style="background-color: white; color: grey;"> Required test
+                                cases</label>
+                            <textarea class="test-case-input" rows="1">12, 31, 25, 17, 40, 10, 29</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">4</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Additional test cases -->
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">5</textarea>
+                        </div>
+                    </div>
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">1</textarea>
+                        </div>
+                    </div>
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">1</textarea>
+                        </div>
+                    </div>
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">1</textarea>
+                        </div>
+                    </div>
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">1</textarea>
+                        </div>
+                    </div>
+                    <div class="test-case-row">
+                        <div class="test-case-column">
+                            <textarea class="test-case-input" rows="1">1,2,3,4,5,6,7,8,9,10</textarea>
+                        </div>
+                        <div class="test-case-result">→</div>
+                        <div class="test-case-column">
+                            <textarea class="test-case-output" rows="1">1</textarea>
+                        </div>
+                    </div>
+                    <!-- Repeat for additional test cases as needed -->
+                </div>
+
+                <div class="btn-container">
+                    <button class="update-challenge-button">Update custom challenge</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+                At <strong>Our Company</strong>, our mission is to innovate and deliver exceptional products
+                that enrich
+                lives and foster
+                sustainable growth. We value integrity, quality, and customer satisfaction, believing that
+                these
+                principles are key to long-lasting success. Our vision is to be a global leader in our
+                industry, driving
+                positive change and setting new standards of excellence.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lab1.html">Labs</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: 23130347@st.hcmuaf.edu.vn</li>
+                <li>Phone: +84 962 759 722 </li>
+                <li>Address: VQCR+GP6, Quarter 6, Thu Duc, Ho Chi Minh city</li>
+            </ul>
+        </div>
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Tran Duc Tri. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    // Function to open the second modal and hide the first one
+    function openSecondModal() {
+        document.getElementById('initialModal').style.display = 'none';
+        document.getElementById('secondModal').style.display = 'block';
+    }
+    function openthirdModal() {
+        document.getElementById('secondModal').style.display = 'none';
+        document.getElementById('thirdModal').style.display = 'block';
+    }
+
+    // Function to close the modal (optional, if you want to close with the "x" button)
+    function closeModal() {
+        document.getElementById('secondModal').style.display = 'none';
+        document.getElementById('initialModal').style.display = 'block';
+    }
+    function closeModal1() {
+        document.getElementById('thirdModal').style.display = 'none';
+        document.getElementById('initialModal').style.display = 'block';
+    }
+</script>
+
+</html>
