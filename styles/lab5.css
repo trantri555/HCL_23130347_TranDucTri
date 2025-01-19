@@ -14,6 +14,7 @@ body {
     color: #444;
     min-height: 100vh;
 }
+
 .menu {
     list-style: none;
     padding: 0;
@@ -69,10 +70,7 @@ section {
 
 main {
     background: url('../image/dorocosmo.jpg') center center / cover no-repeat;
-}
-
-main {
-    flex: 1;    
+    flex: 1;
     padding: 20px;
 }
 
@@ -97,8 +95,10 @@ header {
     align-items: center;
     gap: 10px;
 }
+
 .logo-img {
-    width: 40px; /* Adjust size as needed */
+    width: 40px;
+    /* Adjust size as needed */
     height: auto;
 }
 
@@ -113,11 +113,12 @@ nav {
     display: flex;
     justify-content: center;
 }
-                                                                                                         
+
 .menu a:hover {
     background-color: #555;
     border-radius: 5px;
 }
+
 .main-nav {
     background-color: #333;
     overflow: hidden;
@@ -158,6 +159,7 @@ nav {
     z-index: 1000;
 }
 
+
 .labs-bar ul {
     list-style-type: none;
     margin: 0;
@@ -187,6 +189,7 @@ nav {
     background-color: #555;
     color: white;
 }
+
 .footer {
     background-color: #444;
     color: white;
@@ -295,7 +298,6 @@ nav {
 .learning-header a {
     color: #bbb;
     text-decoration: none
-    
 }
 
 .learning-header a:hover {
@@ -322,6 +324,7 @@ nav {
     font-weight: bold;
     /* border-bottom: 2px solid white; */
 }
+
 /* Styling for the tabs */
 .tabs {
     display: flex;
@@ -353,13 +356,15 @@ nav {
     justify-content: space-between;
     margin-top: 30px;
 }
-.sort-section{
+
+.sort-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
 
 }
+
 .sort-section select,
 .filter-section select {
     width: 150px;
@@ -367,7 +372,11 @@ nav {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.sort-section, .filter-section, .reset, .search {
+
+.sort-section,
+.filter-section,
+.reset,
+.search {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -379,7 +388,8 @@ nav {
     font-weight: bold;
 }
 
-.my-learning-controls select, .my-learning-controls input[type="text"] {
+.my-learning-controls select,
+.my-learning-controls input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -392,7 +402,8 @@ nav {
     color: #666;
     cursor: pointer;
 }
-.search{
+
+.search {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -417,7 +428,8 @@ nav {
 .tab-content {
     display: none;
     padding: 10px 0;
-    background-color: #fff; /* White background for content */
+    background-color: #fff;
+    /* White background for content */
     border-radius: 0%;
     margin-top: 0px;
 }
@@ -425,6 +437,7 @@ nav {
 .tab-content.active {
     display: block;
 }
+
 .course-cards {
     display: flex;
     flex-wrap: wrap;
@@ -441,7 +454,7 @@ nav {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    
+
     margin-left: 0;
 }
 
@@ -493,14 +506,16 @@ nav {
 .stars {
     display: inline-block;
     font-size: 16px;
-    color: #ddd; /* Default star color */
+    color: #ddd;
+    /* Default star color */
     position: relative;
 }
 
 /* Create the shine effect based on the data-rating attribute */
 .stars::before {
     content: "★★★★★";
-    color: #ffc107; /* Shiny star color */
+    color: #ffc107;
+    /* Shiny star color */
     position: absolute;
     top: 0;
     left: 0;
@@ -511,16 +526,45 @@ nav {
 }
 
 /* Adjust the star width based on the rating */
-.stars[data-rating="5"]::before { width: 100%; }
-.stars[data-rating="4.5"]::before { width: 90%; }
-.stars[data-rating="4"]::before { width: 80%; }
-.stars[data-rating="3.5"]::before { width: 70%; }
-.stars[data-rating="3"]::before { width: 60%; }
-.stars[data-rating="2.5"]::before { width: 50%; }
-.stars[data-rating="2"]::before { width: 40%; }
-.stars[data-rating="1.5"]::before { width: 30%; }
-.stars[data-rating="1"]::before { width: 20%; }
-.stars[data-rating="0.5"]::before { width: 10%; }
+.stars[data-rating="5"]::before {
+    width: 100%;
+}
+
+.stars[data-rating="4.5"]::before {
+    width: 90%;
+}
+
+.stars[data-rating="4"]::before {
+    width: 80%;
+}
+
+.stars[data-rating="3.5"]::before {
+    width: 70%;
+}
+
+.stars[data-rating="3"]::before {
+    width: 60%;
+}
+
+.stars[data-rating="2.5"]::before {
+    width: 50%;
+}
+
+.stars[data-rating="2"]::before {
+    width: 40%;
+}
+
+.stars[data-rating="1.5"]::before {
+    width: 30%;
+}
+
+.stars[data-rating="1"]::before {
+    width: 20%;
+}
+
+.stars[data-rating="0.5"]::before {
+    width: 10%;
+}
 
 .rating-text {
     font-size: 12px;
@@ -549,7 +593,8 @@ nav {
 .header-row {
     display: flex;
     align-items: center;
-    gap: 12px; /* Spacing between icon and text */
+    gap: 12px;
+    /* Spacing between icon and text */
 }
 
 .course-icon {
@@ -604,6 +649,7 @@ nav {
 
 .progress-fill {
     height: 100%;
-    background-color: #673AB7; /* Purple color for the progress fill */
+    background-color: #673AB7;
+    /* Purple color for the progress fill */
     border-radius: 2px;
 }
