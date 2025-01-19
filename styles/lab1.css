@@ -275,6 +275,8 @@ main {
 
 .lab1 {
     display: block;
+    padding: 5%;
+    background-color: #fff;
 }
 
 h3 {
